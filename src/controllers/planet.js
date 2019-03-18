@@ -43,7 +43,12 @@ async function findById(id){
   return Planet.findById(id, ).select('-__v');
 }
 
+async function removeById(id){
+  return Planet.findByIdAndDelete(id);
+}
+
 module.exports = {
+  removeById,
   add,
   find,
   findById,

@@ -1,4 +1,4 @@
-const { validate, add, find } = require('../../src/controllers/planet');
+const { validate, add, find, findById, removeById } = require('../../src/controllers/planet');
 const mongoose = require('mongoose');
 
 describe('Test validate', () => {
@@ -73,7 +73,7 @@ describe('mongoose model test', () => {
     });
   });
 
-  describe('find methods', () => {
+  describe('find method', () => {
     test('find should be defined', async () => {
       expect(find).toBeDefined();
     });
@@ -82,5 +82,17 @@ describe('mongoose model test', () => {
       const planets = await find();
       expect(Array.isArray(planets)).toBe(true);
     })
+  });
+
+  describe('findById method', () => {
+    test('findById should be defined', async () => {
+      expect(findById).toBeDefined();
+    });
+  });
+
+  describe('removeById method', () => {
+    test('removeById should be defined', async () => {
+      expect(removeById).toBeDefined();
+    });
   });
 });
