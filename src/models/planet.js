@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Planet = mongoose.model('Planet', {
   name: String,
-  clime: String,
+  climate: String,
   terrain: String
 });
 

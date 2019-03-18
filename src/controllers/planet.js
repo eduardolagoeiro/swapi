@@ -5,9 +5,9 @@ function validate(data){
   if(res) return res;
   res = validateIsString(data, 'name');
   if(res) return res;
-  res = validateIsRequired(data, 'clime');
+  res = validateIsRequired(data, 'climate');
   if(res) return res;
-  res = validateIsString(data, 'clime');
+  res = validateIsString(data, 'climate');
   if(res) return res;
   res = validateIsRequired(data, 'terrain');
   if(res) return res;
