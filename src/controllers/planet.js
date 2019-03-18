@@ -1,10 +1,4 @@
-const mongoose = require('mongoose');
-
-const Planet = mongoose.model('Planet', {
-  name: String,
-  clime: String,
-  terrain: String
-});
+const Planet = require('../models/planet');
 
 function validate(data){
   let res = validateIsRequired(data, 'name');
@@ -41,7 +35,7 @@ async function add(data){
   return await planet.save();
 }
 
-async function find(options){
+async function find(options = {}){
   if(options.name) options = {name: options.name};
   else options = {};
   return Planet.find(options).select('-__v');
@@ -57,4 +51,3 @@ module.exports = {
   findById,
   validate
 }
-

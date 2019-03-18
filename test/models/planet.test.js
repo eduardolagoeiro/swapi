@@ -1,4 +1,4 @@
-const { validate, add, find } = require('../../src/models/Planet');
+const { validate, add, find } = require('../../src/controllers/planet');
 const mongoose = require('mongoose');
 
 describe('Test validate', () => {

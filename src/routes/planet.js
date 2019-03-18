@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {find, findById} = require('../models/Planet');
+const {find, findById} = require('../controllers/planet');
 
 router.get('/', async (req, res) => {
   try{
