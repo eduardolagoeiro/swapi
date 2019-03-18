@@ -5,7 +5,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.use('/planet', require('./routes/planet'));
+app.use('/planets', require('./routes/planet'));
 
 module.exports = app;
 
