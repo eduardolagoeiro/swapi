@@ -45,9 +45,19 @@ async function findAll(){
   return Planet.find();
 }
 
+async function findById(id){
+  return await Planet.findById(id);
+}
+
+async function findByName(name){
+  return await Planet.findOne({ name });
+}
+
 module.exports = {
   add,
   findAll,
+  findById,
+  findByName,
   validate
 }
 
