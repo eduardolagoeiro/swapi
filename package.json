@@ -1,0 +1,19 @@
+{
+  "name": "swapi",
+  "version": "1.0.0",
+  "description": "star wars api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardolagoeiro/swapi.git"
+  },
+  "author": "eduardo lagoeiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduardolagoeiro/swapi/issues"
+  },
+  "homepage": "https://github.com/eduardolagoeiro/swapi#readme"
+}
