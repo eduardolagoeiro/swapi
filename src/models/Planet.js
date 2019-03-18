@@ -41,8 +41,13 @@ async function add(data){
   return await planet.save();
 }
 
+async function findAll(){
+  return Planet.find();
+}
+
 module.exports = {
   add,
+  findAll,
   validate
 }
 

@@ -1,4 +1,4 @@
-const { validate, add } = require('../../src/models/Planet');
+const { validate, add, findAll } = require('../../src/models/Planet');
 const mongoose = require('mongoose');
 
 describe('Test validate', () => {
@@ -58,16 +58,29 @@ describe('mongoose model test', () => {
     mongoose.disconnect(done);
   });
 
-  test('add should be defined', async () => {
-    expect(add).toBeDefined();
+  describe('add method', () => {
+    test('add should be defined', async () => {
+      expect(add).toBeDefined();
+    });
+
+    test('add should add in database', async () => {
+      const addRes = await add({
+        name: 'nametest',
+        clime: 'climetest',
+        terrain: 'terraintest'
+      });
+      expect(addRes._id).toBeDefined();
+    });
   });
 
-  test('add should add in database', async () => {
-    const addRes = await add({
-      name: 'nametest',
-      clime: 'climetest',
-      terrain: 'terraintest'
+  describe('find methods', () => {
+    test('find all should be defined', async () => {
+      expect(findAll).toBeDefined();
     });
-    expect(addRes._id).toBeDefined();
+
+    test('find all should find array', async () => {
+      const planets = await findAll();
+      expect(Array.isArray(planets)).toBe(true);
+    })
   });
 });
