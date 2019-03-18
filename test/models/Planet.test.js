@@ -58,7 +58,7 @@ describe('mongoose model test', () => {
     mongoose.disconnect(done);
   });
 
-  test('add shoudl be defined', async () => {
+  test('add should be defined', async () => {
     expect(add).toBeDefined();
   });
 
