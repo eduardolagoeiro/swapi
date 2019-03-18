@@ -1,6 +1,8 @@
 const request = require('supertest');
 const app = require('../../src/app');
 const mongoose = require('mongoose');
+const Planet = require('../../src/models/planet');
+const {add} = require('../../src/controllers/planet');
 
 beforeAll(done => {
   mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true}, done);
@@ -11,6 +13,16 @@ afterAll(done => {
 });
 
 describe('Test the planets route', () => {
+
+  //clean db and insert
+  beforeEach( async () => {
+    await Planet.deleteMany({});
+    await add({
+      name: 'planet1',
+      terrain: 'terrain1',
+      climate: 'climate1'
+    });
+  });
 
   test('/planets return 200 and array', async () => {
     const response = await request(app).get('/planets');
