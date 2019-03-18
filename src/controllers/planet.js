@@ -1,4 +1,5 @@
 const Planet = require('../models/planet');
+const axios = require('axios');
 
 function validate(data){
   let res = validateIsRequired(data, 'name');
@@ -29,6 +30,14 @@ function validateIsRequired(data, attribute){
 }
 
 async function add(data){
+  data.movieApparitions = 0;
+  const swapiPlanet = await axios.get(`${process.env.SWAPI_URL}planets?search=${data.name}`);
+  if(swapiPlanet.data
+    && swapiPlanet.data.results
+    && swapiPlanet.data.results[0]
+    && swapiPlanet.data.results[0].films){
+    data.movieApparitions = swapiPlanet.data.results[0].films.length;
+  }
   const planet = new Planet(data);
   return planet.save();
 }
