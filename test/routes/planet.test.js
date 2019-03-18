@@ -49,4 +49,21 @@ describe('Test the planets route', () => {
     expect(planet._id).toBeDefined();
   })
 
+  test('/planets delete by id correctly', async () => {
+    const response = await request(app).get('/planets');
+    const planets = JSON.parse(response.text);
+    const deletePlanetResponse = await request(app).delete(`/planets/${planets[0]._id}`);
+    expect(deletePlanetResponse.statusCode).toBe(200);
+    const planet = JSON.parse(deletePlanetResponse.text);
+    const deletedId = planet._id;
+    expect(planet).toMatchObject(planets[0]);
+    const findPlanetByIdResponse = await request(app).get(`/planets/${deletedId}`);
+    expect(findPlanetByIdResponse.statusCode).toBe(404);
+  })
+
+  test('/planets delete by id 404', async () => {
+    const deletePlanetResponse = await request(app).delete('/planets/5c8f04e6134a8300922c46f3');
+    expect(deletePlanetResponse.statusCode).toBe(404);
+  })
+
 })
