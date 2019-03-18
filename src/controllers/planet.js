@@ -32,7 +32,7 @@ async function add(data){
   const validateResult = validate(data);
   if(validateResult) throw new Error(validateResult);
   const planet = new Planet(data);
-  return await planet.save();
+  return planet.save();
 }
 
 async function find(options = {}){
@@ -42,7 +42,7 @@ async function find(options = {}){
 }
 
 async function findById(id){
-  return await Planet.findById(id, ).select('-__v');
+  return Planet.findById(id, ).select('-__v');
 }
 
 module.exports = {
