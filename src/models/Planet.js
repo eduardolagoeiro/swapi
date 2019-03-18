@@ -41,23 +41,20 @@ async function add(data){
   return await planet.save();
 }
 
-async function findAll(){
-  return Planet.find();
+async function find(options){
+  if(options.name) options = {name: options.name};
+  else options = {};
+  return Planet.find(options).select('-__v');
 }
 
 async function findById(id){
-  return await Planet.findById(id);
-}
-
-async function findByName(name){
-  return await Planet.findOne({ name });
+  return await Planet.findById(id, ).select('-__v');
 }
 
 module.exports = {
   add,
-  findAll,
+  find,
   findById,
-  findByName,
   validate
 }
 

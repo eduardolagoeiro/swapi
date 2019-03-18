@@ -1,9 +1,9 @@
 const router = require('express').Router()
-const {findAll, findById} = require('../models/Planet');
+const {find, findById} = require('../models/Planet');
 
 router.get('/', async (req, res) => {
   try{
-    const planets = await findAll();
+    const planets = await find({name: req.query.name});
     res.status(200).send(planets);
   }catch(err){
     res.status(500).send(err);

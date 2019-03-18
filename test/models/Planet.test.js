@@ -1,4 +1,4 @@
-const { validate, add, findAll } = require('../../src/models/Planet');
+const { validate, add, find } = require('../../src/models/Planet');
 const mongoose = require('mongoose');
 
 describe('Test validate', () => {
@@ -74,12 +74,12 @@ describe('mongoose model test', () => {
   });
 
   describe('find methods', () => {
-    test('find all should be defined', async () => {
-      expect(findAll).toBeDefined();
+    test('find should be defined', async () => {
+      expect(find).toBeDefined();
     });
 
-    test('find all should find array', async () => {
-      const planets = await findAll();
+    test('find should find array', async () => {
+      const planets = await find();
       expect(Array.isArray(planets)).toBe(true);
     })
   });
