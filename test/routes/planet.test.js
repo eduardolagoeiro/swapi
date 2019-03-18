@@ -34,4 +34,19 @@ describe('Test the planets route', () => {
     expect(response.statusCode).toBe(404);
   });
 
+  test('/planets post create a resource', async () => {
+    const obj = {
+      name: 'nametest',
+      climate: 'climatetest',
+      terrain: 'terraintest'
+    };
+    const createResult = await request(app)
+      .post('/planets')
+      .send(obj)
+    expect(createResult.statusCode).toBe(200);
+    const planet = JSON.parse(createResult.text);
+    expect(planet).toMatchObject(obj);
+    expect(planet._id).toBeDefined();
+  })
+
 })

@@ -29,8 +29,6 @@ function validateIsRequired(data, attribute){
 }
 
 async function add(data){
-  const validateResult = validate(data);
-  if(validateResult) throw new Error(validateResult);
   const planet = new Planet(data);
   return planet.save();
 }
