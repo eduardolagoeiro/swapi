@@ -40,11 +40,13 @@ async function find(options = {}){
 }
 
 async function findById(id){
-  return Planet.findById(id, ).select('-__v');
+  return Planet.findById(id).select('-__v');
 }
 
 async function removeById(id){
-  return Planet.findByIdAndDelete(id);
+  const res = await findById(id);
+  if(res) await res.delete();
+  return res;
 }
 
 module.exports = {
