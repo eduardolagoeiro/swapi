@@ -1,4 +1,6 @@
-const { validate } = require('../../src/models/Planet');
+const { validate, add } = require('../../src/models/Planet');
+const mongoose = require('mongoose');
+
 describe('Test validate', () => {
   test('should not allow blank name', async () => {
     const res = validate({
@@ -46,4 +48,26 @@ describe('Test validate', () => {
     });
     expect(res).toBeDefined();
   });
-})
+});
+
+describe('mongoose model test', () => {
+  beforeAll(done => {
+    mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true}, done);
+  });
+  afterAll(done => {
+    mongoose.disconnect(done);
+  });
+
+  test('add shoudl be defined', async () => {
+    expect(add).toBeDefined();
+  });
+
+  test('add should add in database', async () => {
+    const addRes = await add({
+      name: 'nametest',
+      clime: 'climetest',
+      terrain: 'terraintest'
+    });
+    expect(addRes._id).toBeDefined();
+  });
+});

@@ -10,3 +10,15 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
+      - MONGO_URL=mongodb://mongo:27017/swdb
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGODB_PRIMARY_ROOT_USER=root
+      - MONGODB_ROOT_PASSWORD=123456
