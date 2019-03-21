@@ -94,4 +94,20 @@ describe('Test the planets route', () => {
     expect(planet.movieApparitions).toBeGreaterThan(0);
   })
 
+  test('/planets post cannot define movieApparitions', async () => {
+    const obj = {
+      name: 'any name',
+      climate: 'climatetest',
+      terrain: 'terraintest',
+      movieApparitions: 10
+    };
+    const createResult = await request(app)
+      .post('/planets')
+      .send(obj)
+    expect(createResult.statusCode).toBe(200);
+    const planet = JSON.parse(createResult.text);
+    expect(planet._id).toBeDefined();
+    expect(planet.movieApparitions).toBe(0);
+  })
+
 })
