@@ -20,6 +20,3 @@ services:
       - ./data:/data/db
     ports:
       - "27017:27017"
-    environment:
-      - MONGODB_PRIMARY_ROOT_USER=root
-      - MONGODB_ROOT_PASSWORD=123456
